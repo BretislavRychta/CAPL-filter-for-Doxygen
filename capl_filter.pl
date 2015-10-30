@@ -95,6 +95,9 @@ sub main
         #replace "on xyz" => "on_xyz()"
         $line =~ s/^on\s(\S+)/on_$1\(\)/;
 
+        #replace "testcase xyz" => "testcase_xyz"
+        $line =~ s/^testcase\s/testcase_/;
+
         print $line;
     }
 
