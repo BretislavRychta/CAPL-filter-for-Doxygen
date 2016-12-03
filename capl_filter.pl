@@ -1,7 +1,7 @@
 # CAPL filter for Doxygen
 #
 # ISC License:
-# Copyright (c) 2015, Bretislav Rychta
+# Copyright (c) 2016, Bretislav Rychta
 #
 # Permission to use, copy, modify, and/or distribute this software for any
 # purpose with or without fee is hereby granted, provided that the above
@@ -85,15 +85,15 @@ sub main
         }
 
         #replace "on xyz abc" => "on_xyz_abc()"
-        if($line =~ /^on\s(\S+)\s(\S+)/)
+        if($line =~ /^[Oo]n\s(\S+)\s(\S+)/)
         {
             $line =~ s/::/_/g; #replace "::" => "_"
             $line =~ s/\*/asterisk/; #replace "*" => "asterisk"
-            $line =~ s/^on\s(\S+)\s(\S+)/on_$1_$2\(\)/;
+            $line =~ s/^[Oo]n\s(\S+)\s(\S+)/on_$1_$2\(\)/;
         }
 
         #replace "on xyz" => "on_xyz()"
-        $line =~ s/^on\s(\S+)/on_$1\(\)/;
+        $line =~ s/^[Oo]n\s(\S+)/on_$1\(\)/;
 
         #replace "testcase xyz" => "testcase_xyz"
         $line =~ s/^testcase\s/testcase_/;
